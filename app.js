@@ -1,38 +1,63 @@
-let cat1Clicks = 0;
-let cat2Clicks = 0;
-let cat3Clicks = 0;
 let clicks = 0;
-let cat1name = document.querySelector('.cat1-name');
-let cat2name = document.querySelector('.cat2-name');
-let cat3name = document.querySelector('.cat3-name');
 let catname = document.querySelector('.cat-name');
 let image = document.querySelector('.cat-image');
 let counter = document.querySelector('.counter');
+this.list = document.querySelector('.cat-list');
 
-cat1name.innerHTML = "Satoshi";
-cat2name.innerHTML = "Nakamoto";
-cat3name.innerHTML = "Vitalik";
+console.log(list)
 
-cat1name.addEventListener('click', function(){
-    let clicks = 0;
-    catname.innerHTML = "You clicked Satoshi";
-    image.src = "./cat.jpg";
-    counter.innerHTML = "Satoshi: " + clicks;
-}, false);
+let cats = [
+    {
+        name: "Satoshi",
+        imgSrc: './cat.jpg',
+        clicks: 0
+    },
+    {
+        name: "Nakamoto",
+        imgSrc: './cat1.jpg',
+        clicks: 0
+    },
+    {
+        name: "Vitalik",
+        imgSrc: './cat3.jpg',
+        clicks: 0
+    }
+]
 
-cat2name.addEventListener('click', function(){
-    let clicks = 0;
-    catname.innerHTML = "You clicked Nakamoto";
-    image.src = "./cat1.jpg";
-    counter.innerHTML = "Nakamoto: " + clicks;
-}, false);
+for (cat in cats) {
+    cat = cats[cat];
+    console.log(cat);
 
-cat3name.addEventListener('click', function(){
-    let clicks = 0;
-    catname.innerHTML = "You clicked Vitalik";
-    image.src = "./cat3.jpg";
-    counter.innerHTML = "Vitalik: " + clicks;
-}, false);
+    elem = document.createElement('li');
+    elem.textContent = cat.name;
+
+    this.list.appendChild(elem);
+
+    elem.addEventListener('click', function() {
+        catname.innerHTML = cat.name;
+        image.src = cat.imgSrc;  
+    }, false)
+}
+// cat1name.addEventListener('click', function(){
+//     let clicks = 0;
+//     catname.innerHTML = "You clicked Satoshi";
+//     image.src = "./cat.jpg";
+//     counter.innerHTML = "Satoshi: " + clicks;
+// }, false);
+
+// cat2name.addEventListener('click', function(){
+//     let clicks = 0;
+//     catname.innerHTML = "You clicked Nakamoto";
+//     image.src = "./cat1.jpg";
+//     counter.innerHTML = "Nakamoto: " + clicks;
+// }, false);
+
+// cat3name.addEventListener('click', function(){
+//     let clicks = 0;
+//     catname.innerHTML = "You clicked Vitalik";
+//     image.src = "./cat3.jpg";
+//     counter.innerHTML = "Vitalik: " + clicks;
+// }, false);
 
 image.addEventListener('click', function(){
     counter.innerHTML = clicks++;
